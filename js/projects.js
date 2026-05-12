@@ -37,7 +37,7 @@ const PROJECTS = [
     title: "Horský Raj",
     desc: "Webová stránka fiktívneho penziónu vytvorená ako Semestrálny projekt pre využitie SEO.",
     stack: ["HTML", "CSS", "JavaScript"],
-    github: "https://github.com/horskyraj/",
+    github: "https://jusgaro.github.io/horskyraj/",
     live: ""
   },
   // ← pridaj ďalší projekt sem
