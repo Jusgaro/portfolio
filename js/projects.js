@@ -21,8 +21,8 @@
 const PROJECTS = [
   {
     title: "Vaulty",
-    desc: "Lokálny Password Manager na ukladanie hesiel. Aj keď sa jedná o local program, heslá sa hashujú do súboru.",
-    stack: ["Java", "OOP"],
+    desc: "Desktop password manager napísaný v Jave s JavaFX. Podporuje registráciu, prihlásenie a bezpečné ukladanie hesiel šifrovaných pomocou AES. Každý používateľ má vlastný zašifrovaný súbor s heslami.",
+    stack: ["Java", "JavaFX", "AES", "SHA-256"],
     github: "https://github.com/jusgaro/Vaulty",
     live: ""
   },
