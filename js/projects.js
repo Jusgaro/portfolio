@@ -20,10 +20,10 @@
 
 const PROJECTS = [
   {
-    title: "Java Console App",
-    desc: "Ukážkový projekt — nahraď ho popisom svojho skutočného projektu. Čo robí, aký problém rieši, čo si sa naučil.",
-    stack: ["Java", "OOP", "Maven"],
-    github: "https://github.com/jusgaro",
+    title: "Vaulty",
+    desc: "Lokálny Password Manager na ukladanie hesiel. Aj keď sa jedná o local program, heslá sa hashujú do súboru.",
+    stack: ["Java", "OOP"],
+    github: "https://github.com/jusgaro/Vaulty",
     live: ""
   },
   {
@@ -31,6 +31,13 @@ const PROJECTS = [
     desc: "Osobné portfolio — tento web. Navrhnutý s dôrazom na čistý technický dizajn a jednoduchú správu obsahu.",
     stack: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/jusgaro/portfolio",
+    live: ""
+  },
+  {
+    title: "Horský Raj",
+    desc: "Webová stránka fiktívneho penziónu vytvorená ako Semestrálny projekt pre využitie SEO.",
+    stack: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/horskyraj/",
     live: ""
   },
   // ← pridaj ďalší projekt sem
