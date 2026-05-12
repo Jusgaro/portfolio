@@ -1,17 +1,17 @@
 // ─────────────────────────────────────────────────────────────
-//  PROJEKTY — uprav tento súbor keď chceš pridať / odobrať projekt
+//  PROJECTS — edit this file to add / remove projects
 //
-//  Každý projekt je objekt s týmito poľami:
-//    title   — názov projektu (povinné)
-//    desc    — popis čo projekt robí (povinné)
-//    stack   — pole technológií (povinné)
-//    github  — URL na GitHub repo (alebo "" ak nechceš zobrazovať)
-//    live    — URL na live verziu (alebo "" ak neexistuje)
+//  Each project is an object with these fields:
+//    title   — project name (required)
+//    desc    — description of what it does (required)
+//    stack   — array of technologies (required)
+//    github  — GitHub repo URL (or "" to hide)
+//    live    — live URL (or "" if none)
 //
-//  Príklad ako pridať projekt — skopíruj blok a uprav:
+//  To add a project, copy a block and edit:
 //    {
-//      title: "Môj nový projekt",
-//      desc: "Popis projektu...",
+//      title: "My new project",
+//      desc: "What it does...",
 //      stack: ["Java", "Spring", "MySQL"],
 //      github: "https://github.com/jusgaro/repo",
 //      live: ""
@@ -21,24 +21,24 @@
 const PROJECTS = [
   {
     title: "Vaulty",
-    desc: "Desktop password manager napísaný v Jave s JavaFX. Podporuje registráciu, prihlásenie a bezpečné ukladanie hesiel šifrovaných pomocou AES. Každý používateľ má vlastný zašifrovaný súbor s heslami.",
+    desc: "Desktop password manager built in Java with JavaFX. Supports registration, login and secure password storage encrypted with AES. Each user has their own encrypted password file.",
     stack: ["Java", "JavaFX", "AES", "SHA-256"],
     github: "https://github.com/jusgaro/Vaulty",
     live: ""
   },
   {
-    title: "Portfolio Web",
-    desc: "Osobné portfolio — tento web. Navrhnutý s dôrazom na čistý technický dizajn a jednoduchú správu obsahu.",
+    title: "Portfolio",
+    desc: "Personal portfolio — this website. Designed with a focus on clean technical aesthetics and simple content management.",
     stack: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/jusgaro/portfolio",
     live: ""
   },
   {
     title: "Horský Raj",
-    desc: "Webová stránka fiktívneho penziónu vytvorená ako Semestrálny projekt pre využitie SEO.",
+    desc: "Website for a fictional mountain guesthouse, built as a semester project with a focus on SEO best practices.",
     stack: ["HTML", "CSS", "JavaScript"],
-    github: "https://jusgaro.github.io/horskyraj/",
-    live: ""
+    github: "",
+    live: "https://jusgaro.github.io/horskyraj/"
   },
-  // ← pridaj ďalší projekt sem
+  // ← add next project here
 ];
