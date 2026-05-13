@@ -209,37 +209,6 @@
 
 <script src="projects.js"></script>
 <script src="main.js"></script>
-
-  <script>
-  const names = ["Jusgaro", "Justin"];
-  let nameIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
-  const el = document.getElementById('typing-name');
-
-  function type() {
-    const current = names[nameIndex];
-    if (!deleting) {
-      el.textContent = current.slice(0, charIndex + 1);
-      charIndex++;
-      if (charIndex === current.length) {
-        setTimeout(() => { deleting = true; type(); }, 2000);
-        return;
-      }
-    } else {
-      el.textContent = current.slice(0, charIndex - 1);
-      charIndex--;
-      if (charIndex === 0) {
-        deleting = false;
-        nameIndex = (nameIndex + 1) % names.length;
-      }
-    }
-    setTimeout(type, deleting ? 60 : 100);
-  }
-
-  type();
-</script>
-
   
 </body>
 </html>
