@@ -477,3 +477,15 @@ footer {
   .hero-line { display: none; }
   footer { padding: 24px; flex-direction: column; gap: 8px; }
 }
+.cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
