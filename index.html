@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jusgaro — Software Developer. University of Ostrava, Software Systems.">
+  <title>Jusgaro — Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">jusgaro.dev</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-label">Software Developer</div>
+    <h1 class="hero-name">Jus<em>garo</em></h1>
+    <p class="hero-desc">
+      I build software that <strong>works</strong>. Focused on backend, systems and the things
+      that happen under the hood. Java, Linux and server technologies.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View projects</a>
+      <a href="#contact" class="btn-ghost">Get in touch</a>
+      <span class="avail">
+        <span class="avail-dot"></span>
+        Available
+      </span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">About</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade">
+        <p>Studying <strong>Software Systems</strong> at the University of Ostrava, finishing my first year.</p>
+        <p>Backend is where I feel at home — I enjoy designing logic, working with servers and solving
+          problems that happen <strong>below the surface</strong>.</p>
+        <p>Always learning and looking for opportunities where I can grow and ship things that matter.</p>
+      </div>
+      <div class="fade">
+        <div class="skill-group">
+          <div class="skill-group-label">Languages</div>
+          <div class="skill-tags">
+            <span class="tag hi">Java</span>
+            <span class="tag hi">PowerShell</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Systems</div>
+          <div class="skill-tags">
+            <span class="tag hi">Linux</span>
+            <span class="tag hi">Windows Server</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Other</div>
+          <div class="skill-tags">
+            <span class="tag">OOP</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Databases</span>
+            <span class="tag">Maven</span>
+            <span class="tag">SEO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <span class="sec-title">Experience</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item fade">
+        <div class="exp-date">2025 — present</div>
+        <div>
+          <div class="exp-role">BSc. Software Systems</div>
+          <div class="exp-org">University of Ostrava, Czech Republic</div>
+          <div class="exp-desc">OOP in Java, C++, Ruby on Rails, C#, server administration (Linux, Windows Server), database systems and web development.</div>
+        </div>
+      </div>
+      <div class="exp-item fade">
+        <div class="exp-date">2026</div>
+        <div>
+          <div class="exp-role">SEO & Web Development</div>
+          <div class="exp-org">University of Ostrava</div>
+          <div class="exp-desc">Search engine optimization, website development and performance analysis. Built real web projects with emphasis on usability and search visibility.</div>
+        </div>
+      </div>
+      <div class="exp-item fade">
+        <div class="exp-date">2026</div>
+        <div>
+          <div class="exp-role">Linux & Windows Server Administration</div>
+          <div class="exp-org">University of Ostrava</div>
+          <div class="exp-desc">Server configuration and management, command-line work, network setup, user management and system scripting in Bash and PowerShell.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <span class="sec-title">Projects</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="proj-card fade">
+      <div class="proj-top">
+        <div>
+          <div class="proj-id">PRJ-001</div>
+          <div class="proj-name">Vaulty</div>
+        </div>
+        <a href="https://github.com/jusgaro/vaulty/releases" class="dl-badge" target="_blank">
+          <!-- download icon -->
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download .jar
+        </a>
+      </div>
+      <p class="proj-desc">
+        Local-first desktop password manager built in Java. AES-256 encryption with per-user key
+        derivation via SHA-256 — passwords are encrypted before writing to disk, nothing ever leaves
+        the machine. Clean JavaFX UI with separated MVC architecture.
+      </p>
+      <div class="proj-footer">
+        <div class="proj-stack">
+          <span class="tag hi">Java 17</span>
+          <span class="tag">JavaFX</span>
+          <span class="tag">AES-256</span>
+          <span class="tag">SHA-256</span>
+          <span class="tag">Maven</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/jusgaro/vaulty" class="proj-link" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            Source
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <span class="sec-title">Contact</span>
+      <div class="sec-rule"></div>
+    </div>
+    <h2 class="contact-big fade">Let's work<br><em>together.</em></h2>
+    <p class="contact-sub fade">Looking for internships, part-time work or interesting projects. Feel free to reach out.</p>
+    <div class="contact-row fade">
+      <a href="mailto:your@email.com" class="c-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,12 2,6"/>
+        </svg>
+        your@email.com
+      </a>
+      <a href="https://github.com/jusgaro" class="c-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+        github.com/jusgaro
+      </a>
+      <a href="https://linkedin.com/in/jusgaro" class="c-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="f-text">© 2025 — Jusgaro</span>
+    <span class="f-text">Built with HTML / CSS / JS</span>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 70);
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>
