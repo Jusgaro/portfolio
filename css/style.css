@@ -150,6 +150,20 @@ h1.hero-name {
   margin-bottom: 8px;
 }
 
+/* ─── TYPING CURSOR ───────────────────────────────── */
+.cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 .hero-role {
   font-size: clamp(14px, 2vw, 18px);
   font-weight: 300;
@@ -457,7 +471,7 @@ footer {
   letter-spacing: 0.1em;
 }
 
-/* ─── ANIMATIONS ──────────────────────────────────── */
+/* ─── FADE-IN ─────────────────────────────────────── */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
