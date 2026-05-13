@@ -9,6 +9,37 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
+<script>
+  const names = ["Jusgaro", "Justin"];
+  let nameIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+  const el = document.getElementById('typing-name');
+
+  function type() {
+    const current = names[nameIndex];
+    if (!deleting) {
+      el.textContent = current.slice(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === current.length) {
+        setTimeout(() => { deleting = true; type(); }, 2000);
+        return;
+      }
+    } else {
+      el.textContent = current.slice(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        deleting = false;
+        nameIndex = (nameIndex + 1) % names.length;
+      }
+    }
+    setTimeout(type, deleting ? 60 : 100);
+  }
+
+  type();
+</script>
+  
 <body>
 
 <!-- ─── NAV ──────────────────────────────────────────────────── -->
