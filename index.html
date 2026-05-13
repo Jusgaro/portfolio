@@ -3,212 +3,405 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jusgaro — Software Developer</title>
-  <meta name="description" content="Portfolio — Jusgaro. Software developer, University of Ostrava.">
+  <meta name="description" content="Jusgaro — Software Engineer specialising in systems, automation and backend development. Java, Spring Boot, Linux, Docker, PowerShell. Based in Ostrava, Czech Republic.">
+  <meta name="keywords" content="Java developer, backend developer, systems engineer, Spring Boot, Linux, Docker, PowerShell, Ostrava, Czech Republic, junior developer">
+  <meta property="og:title" content="Jusgaro — Software Engineer">
+  <meta property="og:description" content="Systems & Automation. Java, Spring Boot, Linux, Docker. Ostrava, CZ.">
+  <meta property="og:type" content="website">
+  <title>Jusgaro — Software Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ─── NAV ──────────────────────────────────────────────────── -->
-<nav>
-  <a href="#hero" class="nav-logo">jusgaro<span>.dev</span></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- ─── HERO ─────────────────────────────────────────────────── -->
-<section id="hero">
-  <div class="hero-line"></div>
-  <div class="hero-line"></div>
-  <div class="hero-line"></div>
-
-  <div class="hero-tag">Software Developer</div>
-  <h1 class="hero-name"><span id="typing-name"></span><span class="cursor">|</span></h1>
-  <p class="hero-role">// University of Ostrava · Software Systems</p>
-  <p class="hero-desc">
-    I build software that works. Focused on backend, systems and the things that happen under the hood. Working with Java, Linux and server technologies.
-  </p>
-  <div class="hero-cta">
-    <a href="#projects" class="btn btn-primary">→ View projects</a>
-    <a href="#contact" class="btn">Get in touch</a>
-  </div>
-
-  <div class="hero-status">
-    <div class="status-dot"></div>
-    Available for opportunities
-  </div>
-</section>
-
-<!-- ─── ABOUT ────────────────────────────────────────────────── -->
-<section id="about">
-  <div class="section-header fade-in">
-    <span class="section-num">01</span>
-    <h2 class="section-title">About</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="about-grid">
-    <div class="about-text fade-in">
-      <p>
-        I'm studying Software Systems at the University of Ostrava, currently finishing my first year. I work mainly with Java, PowerShell, Linux and Windows Server.
-      </p>
-      <p>
-        Backend is where I feel at home — I enjoy designing logic, working with servers and solving problems that happen below the surface. I can do frontend, but it's not my thing.
-      </p>
-      <p>
-        I'm always learning and looking for opportunities where I can grow on the backend side of things.
-      </p>
+  <!-- ══ HEADER / MASTHEAD ══ -->
+  <header>
+    <div class="masthead-top">
+      <span class="masthead-pub">Portfolio Document — Rev. 2026.1</span>
+      <span class="masthead-date">Ostrava, Czech Republic · Available for hire</span>
     </div>
 
-    <div class="skills-grid fade-in">
-      <div class="skill-category">
-        <div class="skill-cat-label">Languages</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Java</span>
-          <span class="skill-tag">HTML</span>
-          <span class="skill-tag">CSS</span>
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">PowerShell</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <div class="skill-cat-label">Systems</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Linux</span>
-          <span class="skill-tag">Windows Server</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <div class="skill-cat-label">Web</div>
-        <div class="skill-tags">
-          <span class="skill-tag">SEO</span>
-          <span class="skill-tag">REST API</span>
-          <span class="skill-tag">Responsive</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <div class="skill-cat-label">Other</div>
-        <div class="skill-tags">
-          <span class="skill-tag">OOP</span>
-          <span class="skill-tag">Algorithms</span>
-          <span class="skill-tag">Databases</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── EXPERIENCE ───────────────────────────────────────────── -->
-<section id="experience">
-  <div class="section-header fade-in">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Experience</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="exp-list">
-    <div class="exp-item fade-in">
-      <div class="exp-date">2025 — present</div>
+    <div class="masthead-main">
       <div>
-        <div class="exp-title">BSc. — Software Systems</div>
-        <div class="exp-org">University of Ostrava, Czech Republic</div>
-        <div class="exp-desc">
-          Coursework includes object-oriented programming in Java, C++, Ruby on Rails, C#, server administration (Linux, Windows Server), database systems and web development. Working on both team and individual projects.
+        <div class="masthead-name">JUSGARO</div>
+        <div class="masthead-title">Software Engineer — Systems &amp; Automation</div>
+        <div class="masthead-subtitle">
+          Builds backend systems, writes infrastructure automation, and understands what happens below the surface.
+          Currently year one of a BSc. in Software Systems at the University of Ostrava.
         </div>
+      </div>
+      <div class="masthead-meta">
+        <strong>Primary Stack</strong>
+        Java 21 / Spring Boot<br>
+        PostgreSQL / REST<br>
+        Linux · Windows Server<br>
+        Docker · PowerShell
+        <br>
+        <span class="masthead-status">Open to opportunities</span>
       </div>
     </div>
 
-    <div class="exp-item fade-in">
-      <div class="exp-date">2026</div>
-      <div>
-        <div class="exp-title">SEO & Web Development</div>
-        <div class="exp-org">University of Ostrava</div>
-        <div class="exp-desc">
-          Practical course focused on search engine optimization, website development and performance analysis. Built real web projects with emphasis on usability and search visibility.
+    <nav class="masthead-nav">
+      <a href="#about">Profile</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <main>
+
+    <!-- LEFT COLUMN -->
+    <div class="col-main">
+
+      <!-- § 01 — PROFILE -->
+      <section id="about">
+
+        <div class="sec-head reveal">
+          <span class="sec-num">§ 01</span>
+          <span class="sec-title">Engineer Profile</span>
+        </div>
+
+        <div class="about-body reveal">
+          <p>
+            First-year Software Systems student at the University of Ostrava with a strong foundation in
+            <strong>object-oriented Java</strong>, server administration, and systems scripting.
+            Backend development and infrastructure are where I do my best work.
+          </p>
+          <p>
+            I am comfortable administering both <strong>Linux and Windows Server</strong> environments
+            from the command line — configuring services, managing users, automating tasks with Bash and
+            PowerShell. This gives me an operational perspective most junior developers lack.
+          </p>
+          <p>
+            Currently building toward production-quality backend work: learning <strong>Spring Boot</strong>,
+            containerising applications with <strong>Docker</strong>, and setting up
+            <strong>CI/CD pipelines</strong> with GitHub Actions. Looking for an environment where I can
+            grow fast and contribute real work from day one.
+          </p>
+          <p>
+            Secondary knowledge areas include <strong>SEO and web performance</strong> — an uncommon
+            pairing with systems work that gives me a fuller picture of how software interacts with the
+            open web.
+          </p>
+        </div>
+
+        <div class="sec-head reveal" style="margin-top: 2.5rem;">
+          <span class="sec-num">§ 01.1</span>
+          <span class="sec-title">Technical Specification</span>
+        </div>
+
+        <table class="spec-table reveal">
+          <tr>
+            <td>Languages</td>
+            <td>
+              <div class="spec-tags">
+                <span class="spec-tag primary">Java</span>
+                <span class="spec-tag primary">SQL</span>
+                <span class="spec-tag primary">PowerShell</span>
+                <span class="spec-tag">Bash</span>
+                <span class="spec-tag">C++</span>
+                <span class="spec-tag">C#</span>
+                <span class="spec-tag">HTML / CSS</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Backend</td>
+            <td>
+              <div class="spec-tags">
+                <span class="spec-tag primary">Spring Boot</span>
+                <span class="spec-tag primary">REST APIs</span>
+                <span class="spec-tag">Spring Security</span>
+                <span class="spec-tag">JPA / Hibernate</span>
+                <span class="spec-tag">OOP / SOLID</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Data</td>
+            <td>
+              <div class="spec-tags">
+                <span class="spec-tag primary">PostgreSQL</span>
+                <span class="spec-tag">MySQL</span>
+                <span class="spec-tag">Database design</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Systems</td>
+            <td>
+              <div class="spec-tags">
+                <span class="spec-tag primary">Linux</span>
+                <span class="spec-tag primary">Windows Server</span>
+                <span class="spec-tag">Networking</span>
+                <span class="spec-tag">User management</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>DevOps</td>
+            <td>
+              <div class="spec-tags">
+                <span class="spec-tag primary">Docker</span>
+                <span class="spec-tag">Docker Compose</span>
+                <span class="spec-tag">GitHub Actions</span>
+                <span class="spec-tag">Git</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Other</td>
+            <td>
+              <div class="spec-tags">
+                <span class="spec-tag">SEO</span>
+                <span class="spec-tag">Web performance</span>
+                <span class="spec-tag">Technical writing</span>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+      </section>
+
+      <!-- § 02 — PROJECTS -->
+      <section id="projects">
+
+        <div class="sec-head reveal">
+          <span class="sec-num">§ 02</span>
+          <span class="sec-title">Projects</span>
+        </div>
+
+        <!-- PRJ-001 -->
+        <div class="project-entry reveal">
+          <div class="project-header">
+            <span class="project-id">PRJ-001</span>
+            <span class="project-status-tag status-active">In progress</span>
+          </div>
+          <div class="project-name">
+            <a href="https://github.com/jusgaro" target="_blank" rel="noopener">
+              DevBoard — Infrastructure Monitor
+            </a>
+          </div>
+          <div class="project-desc">
+            A self-hosted server monitoring dashboard built from scratch. Lightweight agent scripts
+            (PowerShell for Windows, Bash for Linux) report CPU, RAM, disk and uptime to a Spring Boot
+            REST API every 60 seconds. A React frontend displays real-time status and historical uptime
+            charts. Deployed via Docker Compose to a VPS with a GitHub Actions CI/CD pipeline.
+          </div>
+          <div class="project-spec">
+            <span class="project-spec-label">Stack</span>
+            <span class="project-spec-val">Java 21, Spring Boot, PostgreSQL, React, Docker, GitHub Actions</span>
+            <span class="project-spec-label">Agents</span>
+            <span class="project-spec-val">PowerShell (Windows), Bash (Linux)</span>
+            <span class="project-spec-label">Auth</span>
+            <span class="project-spec-val">Spring Security + JWT</span>
+            <span class="project-spec-label">Repo</span>
+            <span class="project-spec-val">
+              <a href="https://github.com/jusgaro" target="_blank" rel="noopener">
+                github.com/jusgaro/devboard
+              </a>
+            </span>
+          </div>
+        </div>
+
+        <!-- PRJ-002 (placeholder) -->
+        <div class="project-entry reveal">
+          <div class="project-header">
+            <span class="project-id">PRJ-002</span>
+            <span class="project-status-tag status-placeholder">Add yours</span>
+          </div>
+          <div class="project-name">Your university project</div>
+          <div class="project-desc">
+            Replace this with a real project from coursework — a Java OOP assignment, a Linux scripting
+            task, anything. Link it to a GitHub repo. Any code you wrote is evidence you can write code.
+          </div>
+          <div class="project-spec">
+            <span class="project-spec-label">Stack</span>
+            <span class="project-spec-val">Java, OOP</span>
+            <span class="project-spec-label">Repo</span>
+            <span class="project-spec-val">github.com/jusgaro/—</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- § 03 — EDUCATION -->
+      <section id="experience">
+
+        <div class="sec-head reveal">
+          <span class="sec-num">§ 03</span>
+          <span class="sec-title">Education &amp; Coursework</span>
+        </div>
+
+        <div class="exp-entry reveal">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">BSc. Software Systems</div>
+              <div class="exp-org">Ostravská Univerzita · Ostrava, Czech Republic</div>
+            </div>
+            <span class="exp-period">2025 — present</span>
+          </div>
+          <div class="exp-body">
+            Core curriculum covering object-oriented programming in Java, C++, C# and Ruby on Rails.
+            Database systems, algorithms, and web development. Server administration on Linux and
+            Windows Server. Both team and independent project work throughout the programme.
+          </div>
+        </div>
+
+        <div class="exp-entry reveal">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Linux &amp; Windows Server Administration</div>
+              <div class="exp-org">Ostravská Univerzita</div>
+            </div>
+            <span class="exp-period">2026</span>
+          </div>
+          <div class="exp-body">
+            Practical configuration and management of server environments. Command-line operations,
+            network configuration, user and permission management, and system scripting in Bash and
+            PowerShell.
+          </div>
+        </div>
+
+        <div class="exp-entry reveal">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">SEO &amp; Web Development</div>
+              <div class="exp-org">Ostravská Univerzita</div>
+            </div>
+            <span class="exp-period">2026</span>
+          </div>
+          <div class="exp-body">
+            Applied course in search engine optimisation, web performance analysis, and responsive
+            frontend development. Delivered real web projects with measurable performance targets.
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- RIGHT COLUMN / SIDEBAR -->
+    <div class="col-side" id="contact">
+
+      <!-- § A — AT A GLANCE -->
+      <div class="side-block reveal">
+        <div class="sec-head">
+          <span class="sec-num">§ A</span>
+          <span class="sec-title">At a glance</span>
+        </div>
+        <div class="side-stat-grid">
+          <div class="side-stat">
+            <div class="side-stat-val">1+</div>
+            <div class="side-stat-label">Yrs coding</div>
+          </div>
+          <div class="side-stat">
+            <div class="side-stat-val">Y1</div>
+            <div class="side-stat-label">BSc. progress</div>
+          </div>
+          <div class="side-stat">
+            <div class="side-stat-val">3+</div>
+            <div class="side-stat-label">Languages</div>
+          </div>
+          <div class="side-stat">
+            <div class="side-stat-val">CZ</div>
+            <div class="side-stat-label">Ostrava</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="exp-item fade-in">
-      <div class="exp-date">2026</div>
-      <div>
-        <div class="exp-title">Linux & Windows Server Administration</div>
-        <div class="exp-org">University of Ostrava</div>
-        <div class="exp-desc">
-          Configuration and management of server environments. Command-line work, network setup, user management and system scripting in Bash and PowerShell.
+      <!-- § B — AVAILABILITY -->
+      <div class="side-block reveal">
+        <div class="sec-head">
+          <span class="sec-num">§ B</span>
+          <span class="sec-title">Availability</span>
         </div>
+        <ul class="side-list">
+          <li><span class="label">Status</span><span class="val">Open</span></li>
+          <li><span class="label">Type</span><span class="val">Internship / Part-time</span></li>
+          <li><span class="label">Location</span><span class="val">Ostrava / Remote</span></li>
+          <li><span class="label">Start</span><span class="val">Immediate</span></li>
+        </ul>
       </div>
+
+      <!-- § C — CONTACT -->
+      <div class="side-block reveal">
+        <div class="sec-head">
+          <span class="sec-num">§ C</span>
+          <span class="sec-title">Contact</span>
+        </div>
+        <a class="side-link" href="mailto:your@email.com">
+          <div>
+            <span class="side-link-label">Email</span>
+            <span class="side-link-val">your@email.com</span>
+          </div>
+          <span class="side-arrow">↗</span>
+        </a>
+        <a class="side-link" href="https://github.com/jusgaro" target="_blank" rel="noopener">
+          <div>
+            <span class="side-link-label">GitHub</span>
+            <span class="side-link-val">github.com/jusgaro</span>
+          </div>
+          <span class="side-arrow">↗</span>
+        </a>
+        <a class="side-link" href="https://linkedin.com/in/jusgaro" target="_blank" rel="noopener">
+          <div>
+            <span class="side-link-label">LinkedIn</span>
+            <span class="side-link-val">linkedin.com/in/jusgaro</span>
+          </div>
+          <span class="side-arrow">↗</span>
+        </a>
+      </div>
+
+      <!-- § D — SPOKEN LANGUAGES -->
+      <div class="side-block reveal">
+        <div class="sec-head">
+          <span class="sec-num">§ D</span>
+          <span class="sec-title">Languages</span>
+        </div>
+        <ul class="side-list">
+          <li><span class="label">Czech</span><span class="val">Native</span></li>
+          <li><span class="label">English</span><span class="val">Professional</span></li>
+        </ul>
+      </div>
+
+      <!-- § E — NOTE -->
+      <div class="side-block reveal">
+        <div class="sec-head">
+          <span class="sec-num">§ E</span>
+          <span class="sec-title">Note</span>
+        </div>
+        <p class="side-note">
+          Actively studying Spring Boot, Docker and CI/CD alongside university coursework.
+          All code is on GitHub. References available on request.
+        </p>
+      </div>
+
     </div>
-  </div>
-</section>
+  </main>
 
-<!-- ─── PROJECTS ─────────────────────────────────────────────── -->
-<section id="projects">
-  <div class="section-header fade-in">
-    <span class="section-num">03</span>
-    <h2 class="section-title">Projects</h2>
-    <div class="section-line"></div>
-  </div>
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <span>JUSGARO · Portfolio Rev. 2026</span>
+    <span>Built with HTML / CSS · github.com/jusgaro</span>
+  </footer>
 
-  <div class="projects-grid" id="projects-grid"></div>
-</section>
+  <!-- ══ SCROLL REVEAL ══ -->
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
 
-<!-- ─── CONTACT ──────────────────────────────────────────────── -->
-<section id="contact">
-  <div class="section-header fade-in">
-    <span class="section-num">04</span>
-    <h2 class="section-title">Contact</h2>
-    <div class="section-line"></div>
-  </div>
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
 
-  <div class="contact-grid">
-    <div class="fade-in">
-      <div class="contact-big">Let's work<br>together.</div>
-      <p class="contact-sub">
-        Looking for internships, part-time work or interesting projects. Feel free to reach out.
-      </p>
-    </div>
-    <div class="contact-links fade-in">
-      <a href="mailto:your@email.com" class="contact-link">
-        <svg class="contact-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="2" y="4" width="20" height="16" rx="2"/>
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-        </svg>
-        your@email.com
-      </a>
-      <a href="https://github.com/jusgaro" class="contact-link" target="_blank" rel="noopener">
-        <svg class="contact-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-        </svg>
-        github.com/jusgaro
-      </a>
-      <a href="https://linkedin.com/in/jusgaro" class="contact-link" target="_blank" rel="noopener">
-        <svg class="contact-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-          <rect x="2" y="9" width="4" height="12"/>
-          <circle cx="4" cy="4" r="2"/>
-        </svg>
-        LinkedIn
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ─── FOOTER ───────────────────────────────────────────────── -->
-<footer>
-  <span>© 2025 — Jusgaro</span>
-  <span>Built with HTML / CSS / JS</span>
-</footer>
-
-<script src="projects.js"></script>
-<script src="main.js"></script>
-  
 </body>
 </html>
