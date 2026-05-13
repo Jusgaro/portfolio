@@ -3,405 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Jusgaro — Software Engineer specialising in systems, automation and backend development. Java, Spring Boot, Linux, Docker, PowerShell. Based in Ostrava, Czech Republic.">
-  <meta name="keywords" content="Java developer, backend developer, systems engineer, Spring Boot, Linux, Docker, PowerShell, Ostrava, Czech Republic, junior developer">
-  <meta property="og:title" content="Jusgaro — Software Engineer">
-  <meta property="og:description" content="Systems & Automation. Java, Spring Boot, Linux, Docker. Ostrava, CZ.">
-  <meta property="og:type" content="website">
-  <title>Jusgaro — Software Engineer</title>
+  <meta name="description" content="Jusgaro — Software Developer. University of Ostrava, Software Systems.">
+  <title>Jusgaro — Software Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ══ HEADER / MASTHEAD ══ -->
-  <header>
-    <div class="masthead-top">
-      <span class="masthead-pub">Portfolio Document — Rev. 2026</span>
-      <span class="masthead-date">Ostrava, Czech Republic · Available for hire</span>
+  <nav>
+    <span class="nav-logo">jusgaro.dev</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-label">Software Developer</div>
+    <h1 class="hero-name">Jus<em>garo</em></h1>
+    <p class="hero-desc">
+      I build software that <strong>works</strong>. Focused on backend, systems and the things
+      that happen under the hood. Java, Linux and server technologies.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View projects</a>
+      <a href="#contact" class="btn-ghost">Get in touch</a>
+      <span class="avail">
+        <span class="avail-dot"></span>
+        Available
+      </span>
     </div>
+  </section>
 
-    <div class="masthead-main">
-      <div>
-        <div class="masthead-name">JUSGARO</div>
-        <div class="masthead-title">Software Engineer — Systems &amp; Automation</div>
-        <div class="masthead-subtitle">
-          Builds backend systems, writes infrastructure automation, and understands what happens below the surface.
-          Currently year one of a BSc. in Software Systems at the University of Ostrava.
-        </div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">About</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade">
+        <p>Studying <strong>Software Systems</strong> at the University of Ostrava, finishing my first year.</p>
+        <p>Backend is where I feel at home — I enjoy designing logic, working with servers and solving
+          problems that happen <strong>below the surface</strong>.</p>
+        <p>Always learning and looking for opportunities where I can grow and ship things that matter.</p>
       </div>
-      <div class="masthead-meta">
-        <strong>Primary Stack</strong>
-        Java 21 / Spring Boot<br>
-        PostgreSQL / REST<br>
-        Linux · Windows Server<br>
-        Docker · PowerShell
-        <br>
-        <span class="masthead-status">Open to opportunities</span>
+      <div class="fade">
+        <div class="skill-group">
+          <div class="skill-group-label">Languages</div>
+          <div class="skill-tags">
+            <span class="tag hi">Java</span>
+            <span class="tag hi">PowerShell</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Systems</div>
+          <div class="skill-tags">
+            <span class="tag hi">Linux</span>
+            <span class="tag hi">Windows Server</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Other</div>
+          <div class="skill-tags">
+            <span class="tag">OOP</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Databases</span>
+            <span class="tag">Maven</span>
+            <span class="tag">SEO</span>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <nav class="masthead-nav">
-      <a href="#about">Profile</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <!-- ══ MAIN CONTENT ══ -->
-  <main>
-
-    <!-- LEFT COLUMN -->
-    <div class="col-main">
-
-      <!-- § 01 — PROFILE -->
-      <section id="about">
-
-        <div class="sec-head reveal">
-          <span class="sec-num">§ 01</span>
-          <span class="sec-title">Engineer Profile</span>
-        </div>
-
-        <div class="about-body reveal">
-          <p>
-            First-year Software Systems student at the University of Ostrava with a strong foundation in
-            <strong>object-oriented Java</strong>, server administration, and systems scripting.
-            Backend development and infrastructure are where I do my best work.
-          </p>
-          <p>
-            I am comfortable administering both <strong>Linux and Windows Server</strong> environments
-            from the command line — configuring services, managing users, automating tasks with Bash and
-            PowerShell. This gives me an operational perspective most junior developers lack.
-          </p>
-          <p>
-            Currently building toward production-quality backend work: learning <strong>Spring Boot</strong>,
-            containerising applications with <strong>Docker</strong>, and setting up
-            <strong>CI/CD pipelines</strong> with GitHub Actions. Looking for an environment where I can
-            grow fast and contribute real work from day one.
-          </p>
-          <p>
-            Secondary knowledge areas include <strong>SEO and web performance</strong> — an uncommon
-            pairing with systems work that gives me a fuller picture of how software interacts with the
-            open web.
-          </p>
-        </div>
-
-        <div class="sec-head reveal" style="margin-top: 2.5rem;">
-          <span class="sec-num">§ 01.1</span>
-          <span class="sec-title">Technical Specification</span>
-        </div>
-
-        <table class="spec-table reveal">
-          <tr>
-            <td>Languages</td>
-            <td>
-              <div class="spec-tags">
-                <span class="spec-tag primary">Java</span>
-                <span class="spec-tag primary">PowerShell</span>
-                <span class="spec-tag">Bash</span>
-                <span class="spec-tag">C++</span>
-                <span class="spec-tag">HTML / CSS</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Backend</td>
-            <td>
-              <div class="spec-tags">
-                <span class="spec-tag primary">Spring Boot</span>
-                <span class="spec-tag primary">REST APIs</span>
-                <span class="spec-tag">Spring Security</span>
-                <span class="spec-tag">JPA / Hibernate</span>
-                <span class="spec-tag">OOP / SOLID</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Data</td>
-            <td>
-              <div class="spec-tags">
-                <span class="spec-tag primary">PostgreSQL</span>
-                <span class="spec-tag">MySQL</span>
-                <span class="spec-tag">Database design</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Systems</td>
-            <td>
-              <div class="spec-tags">
-                <span class="spec-tag primary">Linux</span>
-                <span class="spec-tag primary">Windows Server</span>
-                <span class="spec-tag">Networking</span>
-                <span class="spec-tag">User management</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>DevOps</td>
-            <td>
-              <div class="spec-tags">
-                <span class="spec-tag primary">Docker</span>
-                <span class="spec-tag">Docker Compose</span>
-                <span class="spec-tag">GitHub Actions</span>
-                <span class="spec-tag">Git</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Other</td>
-            <td>
-              <div class="spec-tags">
-                <span class="spec-tag">SEO</span>
-                <span class="spec-tag">Web performance</span>
-                <span class="spec-tag">Technical writing</span>
-              </div>
-            </td>
-          </tr>
-        </table>
-
-      </section>
-
-      <!-- § 02 — PROJECTS -->
-      <section id="projects">
-
-        <div class="sec-head reveal">
-          <span class="sec-num">§ 02</span>
-          <span class="sec-title">Projects</span>
-        </div>
-
-        <!-- PRJ-001 -->
-        <div class="project-entry reveal">
-          <div class="project-header">
-            <span class="project-id">PRJ-001</span>
-            <span class="project-status-tag status-active">In progress</span>
-          </div>
-          <div class="project-name">
-            <a href="https://github.com/jusgaro" target="_blank" rel="noopener">
-              DevBoard — Infrastructure Monitor
-            </a>
-          </div>
-          <div class="project-desc">
-            A self-hosted server monitoring dashboard built from scratch. Lightweight agent scripts
-            (PowerShell for Windows, Bash for Linux) report CPU, RAM, disk and uptime to a Spring Boot
-            REST API every 60 seconds. A React frontend displays real-time status and historical uptime
-            charts. Deployed via Docker Compose to a VPS with a GitHub Actions CI/CD pipeline.
-          </div>
-          <div class="project-spec">
-            <span class="project-spec-label">Stack</span>
-            <span class="project-spec-val">Java 21, Spring Boot, PostgreSQL, React, Docker, GitHub Actions</span>
-            <span class="project-spec-label">Agents</span>
-            <span class="project-spec-val">PowerShell (Windows), Bash (Linux)</span>
-            <span class="project-spec-label">Auth</span>
-            <span class="project-spec-val">Spring Security + JWT</span>
-            <span class="project-spec-label">Repo</span>
-            <span class="project-spec-val">
-              <a href="https://github.com/jusgaro" target="_blank" rel="noopener">
-                github.com/jusgaro/devboard
-              </a>
-            </span>
-          </div>
-        </div>
-
-        <!-- PRJ-002 (placeholder) -->
-        <div class="project-entry reveal">
-          <div class="project-header">
-            <span class="project-id">PRJ-002</span>
-            <span class="project-status-tag status-active">Live</span>
-          </div>
-          <div class="project-name">Vaulty</div>
-          <div class="project-desc">
-            Desktop password manager built in Java with JavaFX. Supports registration, login and secure password storage encrypted with AES. Each user has their own encrypted password file.
-          </div>
-          <div class="project-spec">
-            <span class="project-spec-label">Stack</span>
-            <span class="project-spec-val">Java, JavaFX, AES, SHA-256</span>
-            <span class="project-spec-label">Repo</span>
-            <span class="project-spec-val">
-              <a href="https://github.com/jusgaro/vaulty" target="_blank" rel="noopener">
-                github.com/jusgaro/vaulty
-              </a>
-            </span>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- § 03 — EDUCATION -->
-      <section id="experience">
-
-        <div class="sec-head reveal">
-          <span class="sec-num">§ 03</span>
-          <span class="sec-title">Education &amp; Coursework</span>
-        </div>
-
-        <div class="exp-entry reveal">
-          <div class="exp-header">
-            <div>
-              <div class="exp-role">BSc. Software Systems</div>
-              <div class="exp-org">Ostravská Univerzita · Ostrava, Czech Republic</div>
-            </div>
-            <span class="exp-period">2025 — present</span>
-          </div>
-          <div class="exp-body">
-            Core curriculum covering object-oriented programming in Java, C++, C# and Ruby on Rails.
-            Database systems, algorithms, and web development. Server administration on Linux and
-            Windows Server. Both team and independent project work throughout the programme.
-          </div>
-        </div>
-
-        <div class="exp-entry reveal">
-          <div class="exp-header">
-            <div>
-              <div class="exp-role">Linux &amp; Windows Server Administration</div>
-              <div class="exp-org">Ostravská Univerzita</div>
-            </div>
-            <span class="exp-period">2026</span>
-          </div>
-          <div class="exp-body">
-            Practical configuration and management of server environments. Command-line operations,
-            network configuration, user and permission management, and system scripting in Bash and
-            PowerShell.
-          </div>
-        </div>
-
-        <div class="exp-entry reveal">
-          <div class="exp-header">
-            <div>
-              <div class="exp-role">SEO &amp; Web Development</div>
-              <div class="exp-org">Ostravská Univerzita</div>
-            </div>
-            <span class="exp-period">2026</span>
-          </div>
-          <div class="exp-body">
-            Applied course in search engine optimisation, web performance analysis, and responsive
-            frontend development. Delivered real web projects with measurable performance targets.
-          </div>
-        </div>
-
-      </section>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <span class="sec-title">Experience</span>
+      <div class="sec-rule"></div>
     </div>
-
-    <!-- RIGHT COLUMN / SIDEBAR -->
-    <div class="col-side" id="contact">
-
-      <!-- § A — AT A GLANCE -->
-      <div class="side-block reveal">
-        <div class="sec-head">
-          <span class="sec-num">§ A</span>
-          <span class="sec-title">At a glance</span>
-        </div>
-        <div class="side-stat-grid">
-          <div class="side-stat">
-            <div class="side-stat-val">1+</div>
-            <div class="side-stat-label">Yrs coding</div>
-          </div>
-          <div class="side-stat">
-            <div class="side-stat-val">Y1</div>
-            <div class="side-stat-label">BSc. progress</div>
-          </div>
-          <div class="side-stat">
-            <div class="side-stat-val">3+</div>
-            <div class="side-stat-label">Languages</div>
-          </div>
-          <div class="side-stat">
-            <div class="side-stat-val">CZ</div>
-            <div class="side-stat-label">Ostrava</div>
-          </div>
+    <div class="exp-list">
+      <div class="exp-item fade">
+        <div class="exp-date">2025 — present</div>
+        <div>
+          <div class="exp-role">BSc. Software Systems</div>
+          <div class="exp-org">University of Ostrava, Czech Republic</div>
+          <div class="exp-desc">OOP in Java, C++, Ruby on Rails, C#, server administration (Linux, Windows Server), database systems and web development.</div>
         </div>
       </div>
-
-      <!-- § B — AVAILABILITY -->
-      <div class="side-block reveal">
-        <div class="sec-head">
-          <span class="sec-num">§ B</span>
-          <span class="sec-title">Availability</span>
+      <div class="exp-item fade">
+        <div class="exp-date">2026</div>
+        <div>
+          <div class="exp-role">SEO & Web Development</div>
+          <div class="exp-org">University of Ostrava</div>
+          <div class="exp-desc">Search engine optimization, website development and performance analysis. Built real web projects with emphasis on usability and search visibility.</div>
         </div>
-        <ul class="side-list">
-          <li><span class="label">Status</span><span class="val">Open</span></li>
-          <li><span class="label">Type</span><span class="val">Internship / Part-time</span></li>
-          <li><span class="label">Location</span><span class="val">Ostrava / Remote</span></li>
-          <li><span class="label">Start</span><span class="val">Immediate</span></li>
-        </ul>
       </div>
-
-      <!-- § C — CONTACT -->
-      <div class="side-block reveal">
-        <div class="sec-head">
-          <span class="sec-num">§ C</span>
-          <span class="sec-title">Contact</span>
+      <div class="exp-item fade">
+        <div class="exp-date">2026</div>
+        <div>
+          <div class="exp-role">Linux & Windows Server Administration</div>
+          <div class="exp-org">University of Ostrava</div>
+          <div class="exp-desc">Server configuration and management, command-line work, network setup, user management and system scripting in Bash and PowerShell.</div>
         </div>
-        <a class="side-link" href="mailto:your@email.com">
-          <div>
-            <span class="side-link-label">Email</span>
-            <span class="side-link-val">#@email.com</span>
-          </div>
-          <span class="side-arrow">↗</span>
-        </a>
-        <a class="side-link" href="https://github.com/jusgaro" target="_blank" rel="noopener">
-          <div>
-            <span class="side-link-label">GitHub</span>
-            <span class="side-link-val">github.com/jusgaro</span>
-          </div>
-          <span class="side-arrow">↗</span>
-        </a>
-        <a class="side-link" href="https://linkedin.com/in/jusgaro" target="_blank" rel="noopener">
-          <div>
-            <span class="side-link-label">LinkedIn</span>
-            <span class="side-link-val">linkedin.com/in/jusgaro</span>
-          </div>
-          <span class="side-arrow">↗</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <span class="sec-title">Projects</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="proj-card fade">
+      <div class="proj-top">
+        <div>
+          <div class="proj-id">PRJ-001</div>
+          <div class="proj-name">Vaulty</div>
+        </div>
+        <a href="https://github.com/jusgaro/vaulty/releases" class="dl-badge" target="_blank">
+          <!-- download icon -->
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download .jar
         </a>
       </div>
-
-      <!-- § D — SPOKEN LANGUAGES -->
-      <div class="side-block reveal">
-        <div class="sec-head">
-          <span class="sec-num">§ D</span>
-          <span class="sec-title">Languages</span>
+      <p class="proj-desc">
+        Local-first desktop password manager built in Java. AES-256 encryption with per-user key
+        derivation via SHA-256 — passwords are encrypted before writing to disk, nothing ever leaves
+        the machine. Clean JavaFX UI with separated MVC architecture.
+      </p>
+      <div class="proj-footer">
+        <div class="proj-stack">
+          <span class="tag hi">Java 17</span>
+          <span class="tag">JavaFX</span>
+          <span class="tag">AES-256</span>
+          <span class="tag">SHA-256</span>
+          <span class="tag">Maven</span>
         </div>
-        <ul class="side-list">
-          <li><span class="label">Slovak</span><span class="val">Native</span></li>
-          <li><span class="label">English</span><span class="val">B1</span></li>
-        </ul>
-      </div>
-
-      <!-- § E — NOTE -->
-      <div class="side-block reveal">
-        <div class="sec-head">
-          <span class="sec-num">§ E</span>
-          <span class="sec-title">Note</span>
+        <div class="proj-links">
+          <a href="https://github.com/jusgaro/vaulty" class="proj-link" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            Source
+          </a>
         </div>
-        <p class="side-note">
-          Actively studying Spring Boot, Docker and CI/CD alongside university coursework.
-          All code is on GitHub. References available on request.
-        </p>
       </div>
-
     </div>
-  </main>
+  </section>
 
-  <!-- ══ FOOTER ══ -->
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <span class="sec-title">Contact</span>
+      <div class="sec-rule"></div>
+    </div>
+    <h2 class="contact-big fade">Let's work<br><em>together.</em></h2>
+    <p class="contact-sub fade">Looking for internships, part-time work or interesting projects. Feel free to reach out.</p>
+    <div class="contact-row fade">
+      <a href="mailto:your@email.com" class="c-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,12 2,6"/>
+        </svg>
+        your@email.com
+      </a>
+      <a href="https://github.com/jusgaro" class="c-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+        github.com/jusgaro
+      </a>
+      <a href="https://linkedin.com/in/jusgaro" class="c-link" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
   <footer>
-    <span>JUSGARO · Portfolio Rev. 2026</span>
-    <span>Built with HTML / CSS · github.com/jusgaro</span>
+    <span class="f-text">© 2026 — Jusgaro</span>
+    <span class="f-text">Built with HTML / CSS / JS</span>
   </footer>
 
-  <!-- ══ SCROLL REVEAL ══ -->
   <script>
     const obs = new IntersectionObserver(entries => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 60);
-          obs.unobserve(entry.target);
-        }
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 70);
       });
-    }, { threshold: 0.08 });
-
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade').forEach(el => obs.observe(el));
   </script>
 
 </body>
