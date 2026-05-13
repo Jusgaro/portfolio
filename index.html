@@ -7,7 +7,7 @@
   <meta name="description" content="Portfolio — Jusgaro. Software developer, University of Ostrava.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -176,7 +176,7 @@
       </p>
     </div>
     <div class="contact-links fade-in">
-      <a href="mailto:tvoj@email.com" class="contact-link">
+      <a href="mailto:your@email.com" class="contact-link">
         <svg class="contact-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <rect x="2" y="4" width="20" height="16" rx="2"/>
           <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
@@ -207,9 +207,11 @@
   <span>Built with HTML / CSS / JS</span>
 </footer>
 
-<script src="js/projects.js"></script>
-<script src="js/main.js"></script>
-  <script>
+<script src="projects.js"></script>
+<script src="main.js"></script>
+
+<script>
+  // ─── TYPING ANIMATION ─────────────────────────────────────────
   const names = ["Jusgaro", "Justin"];
   let nameIndex = 0;
   let charIndex = 0;
@@ -218,6 +220,7 @@
 
   function type() {
     const current = names[nameIndex];
+
     if (!deleting) {
       el.textContent = current.slice(0, charIndex + 1);
       charIndex++;
@@ -233,6 +236,7 @@
         nameIndex = (nameIndex + 1) % names.length;
       }
     }
+
     setTimeout(type, deleting ? 60 : 100);
   }
 
