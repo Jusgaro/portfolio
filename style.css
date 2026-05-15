@@ -1,202 +1,696 @@
-/* ═══════════════════════════════════════════════
-   JUSGARO.DEV — script.js
-   1. Nav scroll effect + mobile toggle
-   2. Scroll reveal animations
-   3. Horizontal project rail (arrows, dots, drag/swipe)
-═══════════════════════════════════════════════ */
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ─── 1. NAV ─────────────────────────────────── */
+:root {
+  --bg:        #f5f3ef;
+  --bg2:       #eceae4;
+  --bg3:       #e2e0d9;
+  --ink:       #1a1916;
+  --ink2:      #4a4840;
+  --ink3:      #8a8880;
+  --line:      #d4d0c8;
+  --accent:    #1a1916;
+  --green:     #2e7d32;
+  --green-bg:  #e8f5e9;
+  --green-bd:  #a5d6a7;
+  --orange:    #e65100;
+  --orange-bg: #fff3e0;
+  --orange-bd: #ffcc80;
 
-const nav       = document.getElementById('nav');
-const navToggle = document.getElementById('navToggle');
-const navLinks  = document.getElementById('navLinks');
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-mono:    'IBM Plex Mono', monospace;
 
-// Shrink nav on scroll
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
 
-// Mobile hamburger
-navToggle.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  navToggle.classList.toggle('open', open);
-  navToggle.setAttribute('aria-expanded', open);
-});
+  --nav-h: 64px;
+  --card-w: min(520px, 88vw);
+}
 
-// Close menu when a link is tapped
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', false);
-  });
-});
+html { scroll-behavior: smooth; }
 
+body {
+  font-family: var(--font-display);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-/* ─── 2. SCROLL REVEAL ───────────────────────── */
+a { color: inherit; text-decoration: none; }
+strong { font-weight: 600; }
 
-const revealEls = document.querySelectorAll('.reveal');
+/* ─────────────────────────────────────────
+   NOISE OVERLAY
+───────────────────────────────────────── */
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target); // fire once
-    }
-  });
-}, { threshold: 0.12 });
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.5rem, 5vw, 3.5rem);
+  background: var(--bg);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s, background .3s;
+}
+.nav.scrolled {
+  border-color: var(--line);
+  background: rgba(245,243,239,.92);
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink3);
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--ink); }
 
-revealEls.forEach(el => revealObserver.observe(el));
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.nav-toggle.open span:first-child { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.open span:last-child  { transform: translateY(-6.5px) rotate(-45deg); }
 
-
-/* ─── 3. HORIZONTAL PROJECT RAIL ────────────── */
-
-(function initRail() {
-  const track    = document.getElementById('railTrack');
-  const prevBtn  = document.getElementById('railPrev');
-  const nextBtn  = document.getElementById('railNext');
-  const dotsWrap = document.getElementById('railDots');
-
-  if (!track) return;
-
-  const cards = Array.from(track.querySelectorAll('.project-card'));
-  if (cards.length === 0) return;
-
-  let current  = 0;
-  let startX   = 0;
-  let startScroll = 0;
-  let isDragging  = false;
-  let dragMoved   = false;
-
-  // ── Build dots ──────────────────────────────
-  cards.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'rail-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Go to project ${i + 1}`);
-    dot.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(dot);
-  });
-
-  function getDots() {
-    return Array.from(dotsWrap.querySelectorAll('.rail-dot'));
+@media (max-width: 640px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h); left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .3s, opacity .3s;
+    z-index: 99;
   }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .nav-links a { display: block; padding: .75rem clamp(1.5rem,5vw,3.5rem); font-size: 14px; }
+}
 
-  // ── Calculate how far to shift ──────────────
-  // Each card's left edge offset relative to track start
-  function getOffset(index) {
-    const card = cards[index];
-    if (!card) return 0;
+/* ─────────────────────────────────────────
+   REVEAL ANIMATION
+───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .65s ease calc(var(--i, 0) * 80ms),
+              transform .65s ease calc(var(--i, 0) * 80ms);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-    // Left padding of the track (from CSS clamp)
-    const trackPad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--nav-h) + 3rem) clamp(1.5rem, 5vw, 3.5rem) 4rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-inner { max-width: 700px; }
 
-    // Distance from track's inner left to this card's left edge
-    const cardLeft = card.offsetLeft - trackPad;
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--green-bg);
+  border: 1px solid var(--green-bd);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+}
+.dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #43a047;
+  animation: blink 2s infinite;
+  flex-shrink: 0;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: .2; }
+}
 
-    // We want the card centred in the viewport
-    const viewportW  = track.parentElement.clientWidth;
-    const cardW      = card.offsetWidth;
-    const centreOffset = (viewportW - cardW) / 2;
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 800;
+  line-height: .96;
+  letter-spacing: -.05em;
+  margin-bottom: 1.5rem;
+}
+.hero-title .accent {
+  color: var(--ink);
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+.hero-title .accent::after {
+  content: '';
+  position: absolute;
+  bottom: 6px; left: 0; right: 0;
+  height: 4px;
+  background: var(--ink);
+  border-radius: 2px;
+}
 
-    // Don't go beyond left edge
-    const maxShift = track.scrollWidth - track.parentElement.clientWidth;
-    const shift    = Math.max(0, Math.min(cardLeft - centreOffset, maxShift));
+.hero-desc {
+  font-size: clamp(15px, 2vw, 17px);
+  color: var(--ink2);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
 
-    return shift;
-  }
+.hero-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 2rem;
+}
+.chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  color: var(--ink2);
+  letter-spacing: .02em;
+}
+.chip.primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
 
-  // ── Move to index ────────────────────────────
-  function goTo(index) {
-    current = Math.max(0, Math.min(index, cards.length - 1));
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 3rem;
+}
 
-    const shift = getOffset(current);
-    track.style.transform = `translateX(-${shift}px)`;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity .2s, background .2s, transform .15s;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(.97); }
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.btn-primary:hover { opacity: .82; }
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+.btn-ghost:hover { background: var(--bg2); border-color: var(--bg3); }
 
-    // Update dots
-    getDots().forEach((d, i) => d.classList.toggle('active', i === current));
+.hero-scroll {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink3);
+}
+.scroll-line {
+  width: 40px;
+  height: 1px;
+  background: var(--ink3);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: var(--ink);
+  animation: scrollSlide 1.8s ease-in-out infinite;
+}
+@keyframes scrollSlide {
+  0%   { left: -100%; }
+  50%  { left: 100%; }
+  100% { left: 100%; }
+}
 
-    // Update buttons
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === cards.length - 1;
-  }
+/* ─────────────────────────────────────────
+   SECTION SHARED
+───────────────────────────────────────── */
+.section {
+  padding: 5rem clamp(1.5rem, 5vw, 3.5rem);
+  position: relative;
+  z-index: 1;
+}
+.container { max-width: 860px; margin: 0 auto; }
 
-  // ── Arrow buttons ────────────────────────────
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.section-label { display: flex; align-items: baseline; gap: 14px; }
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink3);
+}
+.section-title {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 800;
+  letter-spacing: -.03em;
+}
 
-  // ── Keyboard ─────────────────────────────────
-  document.addEventListener('keydown', e => {
-    // Only when projects section is roughly in view
-    const section = document.getElementById('projects');
-    if (!section) return;
-    const rect = section.getBoundingClientRect();
-    if (rect.top > window.innerHeight || rect.bottom < 0) return;
+/* ─────────────────────────────────────────
+   PROJECTS — HORIZONTAL RAIL
+───────────────────────────────────────── */
+.projects-section { padding-left: 0; padding-right: 0; }
 
-    if (e.key === 'ArrowLeft')  goTo(current - 1);
-    if (e.key === 'ArrowRight') goTo(current + 1);
-  });
+.projects-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0 clamp(1.5rem, 5vw, 3.5rem);
+  margin-bottom: 1.75rem;
+}
 
-  // ── Mouse drag ───────────────────────────────
-  track.addEventListener('mousedown', e => {
-    isDragging = true;
-    dragMoved  = false;
-    startX     = e.pageX;
-    startScroll = getOffset(current);
-    track.classList.add('dragging');
-  });
+/* Arrow + dots row */
+.rail-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.rail-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background .2s, border-color .2s, transform .15s;
+  flex-shrink: 0;
+}
+.rail-btn:hover { background: var(--bg2); border-color: var(--bg3); }
+.rail-btn:active { transform: scale(.9); }
+.rail-btn:disabled { opacity: .3; cursor: default; }
 
-  window.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    const dx = e.pageX - startX;
-    if (Math.abs(dx) > 4) dragMoved = true;
-    const newPos = Math.max(0, startScroll - dx);
-    track.style.transform = `translateX(-${newPos}px)`;
-  });
+.rail-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.rail-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--line);
+  transition: background .25s, transform .25s;
+  cursor: pointer;
+}
+.rail-dot.active {
+  background: var(--ink);
+  transform: scale(1.4);
+}
 
-  window.addEventListener('mouseup', e => {
-    if (!isDragging) return;
-    isDragging = false;
-    track.classList.remove('dragging');
+/* Viewport clips, track slides */
+.rail-viewport {
+  overflow: hidden;
+  padding: 1rem 0 1.5rem;
+}
+.rail-track {
+  display: flex;
+  gap: 20px;
+  padding: 0 clamp(1.5rem, 5vw, 3.5rem);
+  transition: transform .55s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+  cursor: grab;
+}
+.rail-track.dragging { cursor: grabbing; transition: none; }
 
-    if (!dragMoved) return; // was a click, not a drag
+/* Individual project card */
+.project-card {
+  flex: 0 0 var(--card-w);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: border-color .25s, transform .25s;
+  user-select: none;
+}
+.project-card:not(.placeholder):hover {
+  border-color: var(--ink);
+  transform: translateY(-3px);
+}
+.project-card.placeholder {
+  border-style: dashed;
+  opacity: .55;
+  background: transparent;
+}
 
-    const dx = e.pageX - startX;
-    if (dx < -50)      goTo(current + 1);
-    else if (dx > 50)  goTo(current - 1);
-    else               goTo(current); // snap back
-  });
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.project-id {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: .1em;
+}
+.project-links {
+  display: flex;
+  gap: 12px;
+}
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink3);
+  transition: color .2s;
+}
+.project-link:hover { color: var(--ink); }
 
-  // Prevent card links firing after a drag
-  track.addEventListener('click', e => {
-    if (dragMoved) e.preventDefault();
-  }, true);
+.project-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -.04em;
+  margin-bottom: .3rem;
+}
+.project-type {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink3);
+  margin-bottom: 1rem;
+}
+.project-desc {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
 
-  // ── Touch / swipe ─────────────────────────────
-  let touchStartX = 0;
-  let touchStartScroll = 0;
+.project-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+  padding: .75rem;
+  background: var(--bg);
+  border-radius: var(--radius-md);
+}
+.highlight {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  color: var(--ink2);
+  letter-spacing: .03em;
+}
+.highlight.security {
+  background: var(--orange-bg);
+  border-color: var(--orange-bd);
+  color: var(--orange);
+}
 
-  track.addEventListener('touchstart', e => {
-    touchStartX      = e.touches[0].clientX;
-    touchStartScroll = getOffset(current);
-  }, { passive: true });
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.project-tags span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--ink3);
+  border: 1px solid var(--line);
+}
 
-  track.addEventListener('touchmove', e => {
-    const dx     = e.touches[0].clientX - touchStartX;
-    const newPos = Math.max(0, touchStartScroll - dx);
-    track.style.transform = `translateX(-${newPos}px)`;
-  }, { passive: true });
+.wip-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--bg2);
+  color: var(--ink3);
+  border: 1px solid var(--line);
+  margin-top: auto;
+}
 
-  track.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if (dx < -50)     goTo(current + 1);
-    else if (dx > 50) goTo(current - 1);
-    else              goTo(current); // snap back
-  });
+.rail-hint {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink3);
+  padding-top: .25rem;
+}
 
-  // ── Re-snap on resize ─────────────────────────
-  window.addEventListener('resize', () => goTo(current), { passive: true });
+/* ─────────────────────────────────────────
+   TIMELINE
+───────────────────────────────────────── */
+.timeline { display: flex; flex-direction: column; gap: 0; }
 
-  // ── Initial state ─────────────────────────────
-  goTo(0);
+.timeline-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+.timeline-item:last-child { border-bottom: 1px solid var(--line); }
 
-})();
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink3);
+  padding-top: 3px;
+}
+.timeline-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  margin-bottom: .2rem;
+}
+.timeline-place {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink3);
+  margin-bottom: .6rem;
+}
+.timeline-desc {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.7;
+}
+
+@media (max-width: 500px) {
+  .timeline-item { grid-template-columns: 1fr; gap: .4rem; }
+}
+
+/* ─────────────────────────────────────────
+   ABOUT
+───────────────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.about-text p {
+  font-size: 15px;
+  color: var(--ink2);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.about-text p:last-child { margin-bottom: 0; }
+
+.skills-block { display: flex; flex-direction: column; gap: 1.25rem; }
+.skill-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.skill-list span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  color: var(--ink2);
+}
+
+@media (max-width: 640px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ─────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────── */
+.contact-block {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--ink);
+  border-radius: 18px;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  color: var(--bg);
+  text-align: center;
+}
+.contact-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #a0a09a;
+  letter-spacing: .08em;
+  margin-bottom: .3rem;
+}
+.contact-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -.05em;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.contact-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: #a0a09a;
+}
+.contact-sub {
+  font-size: 14px;
+  color: #9a9589;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  background: #2e2d29;
+  border: 1px solid #3e3d39;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #e0dfd8;
+  transition: background .2s;
+}
+.contact-link:hover { background: #3e3d39; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  padding: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink3);
+  position: relative;
+  z-index: 1;
+}
