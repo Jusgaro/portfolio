@@ -200,3 +200,42 @@ revealEls.forEach(el => revealObserver.observe(el));
   goTo(0);
 
 })();
+
+
+/* ─── 4. PROJECT IMAGE SLIDESHOW ────────────── */
+
+(function initSlideshow() {
+  const slides = [
+    'assets/vaulty-1.png',
+    'assets/vaulty-2.png'
+  ];
+
+  const img  = document.getElementById('vaultySlide');
+  const dots = document.querySelectorAll('.img-dot');
+  if (!img) return;
+
+  let current = 0;
+
+  function goToSlide(index) {
+    img.classList.add('fade');
+    setTimeout(() => {
+      current = index;
+      img.src = slides[current];
+      img.classList.remove('fade');
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }, 400);
+  }
+
+  // Auto-advance every 3s
+  setInterval(() => {
+    goToSlide((current + 1) % slides.length);
+  }, 3000);
+
+  // Click dots to switch manually
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (i !== current) goToSlide(i);
+    });
+  });
+})();
