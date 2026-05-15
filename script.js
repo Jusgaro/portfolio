@@ -1,0 +1,202 @@
+/* ═══════════════════════════════════════════════
+   JUSGARO.DEV — script.js
+   1. Nav scroll effect + mobile toggle
+   2. Scroll reveal animations
+   3. Horizontal project rail (arrows, dots, drag/swipe)
+═══════════════════════════════════════════════ */
+
+/* ─── 1. NAV ─────────────────────────────────── */
+
+const nav       = document.getElementById('nav');
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
+
+// Shrink nav on scroll
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// Mobile hamburger
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', open);
+});
+
+// Close menu when a link is tapped
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+  });
+});
+
+
+/* ─── 2. SCROLL REVEAL ───────────────────────── */
+
+const revealEls = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target); // fire once
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => revealObserver.observe(el));
+
+
+/* ─── 3. HORIZONTAL PROJECT RAIL ────────────── */
+
+(function initRail() {
+  const track    = document.getElementById('railTrack');
+  const prevBtn  = document.getElementById('railPrev');
+  const nextBtn  = document.getElementById('railNext');
+  const dotsWrap = document.getElementById('railDots');
+
+  if (!track) return;
+
+  const cards = Array.from(track.querySelectorAll('.project-card'));
+  if (cards.length === 0) return;
+
+  let current  = 0;
+  let startX   = 0;
+  let startScroll = 0;
+  let isDragging  = false;
+  let dragMoved   = false;
+
+  // ── Build dots ──────────────────────────────
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'rail-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to project ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  function getDots() {
+    return Array.from(dotsWrap.querySelectorAll('.rail-dot'));
+  }
+
+  // ── Calculate how far to shift ──────────────
+  // Each card's left edge offset relative to track start
+  function getOffset(index) {
+    const card = cards[index];
+    if (!card) return 0;
+
+    // Left padding of the track (from CSS clamp)
+    const trackPad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+
+    // Distance from track's inner left to this card's left edge
+    const cardLeft = card.offsetLeft - trackPad;
+
+    // We want the card centred in the viewport
+    const viewportW  = track.parentElement.clientWidth;
+    const cardW      = card.offsetWidth;
+    const centreOffset = (viewportW - cardW) / 2;
+
+    // Don't go beyond left edge
+    const maxShift = track.scrollWidth - track.parentElement.clientWidth;
+    const shift    = Math.max(0, Math.min(cardLeft - centreOffset, maxShift));
+
+    return shift;
+  }
+
+  // ── Move to index ────────────────────────────
+  function goTo(index) {
+    current = Math.max(0, Math.min(index, cards.length - 1));
+
+    const shift = getOffset(current);
+    track.style.transform = `translateX(-${shift}px)`;
+
+    // Update dots
+    getDots().forEach((d, i) => d.classList.toggle('active', i === current));
+
+    // Update buttons
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === cards.length - 1;
+  }
+
+  // ── Arrow buttons ────────────────────────────
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // ── Keyboard ─────────────────────────────────
+  document.addEventListener('keydown', e => {
+    // Only when projects section is roughly in view
+    const section = document.getElementById('projects');
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    if (rect.top > window.innerHeight || rect.bottom < 0) return;
+
+    if (e.key === 'ArrowLeft')  goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+
+  // ── Mouse drag ───────────────────────────────
+  track.addEventListener('mousedown', e => {
+    isDragging = true;
+    dragMoved  = false;
+    startX     = e.pageX;
+    startScroll = getOffset(current);
+    track.classList.add('dragging');
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    const dx = e.pageX - startX;
+    if (Math.abs(dx) > 4) dragMoved = true;
+    const newPos = Math.max(0, startScroll - dx);
+    track.style.transform = `translateX(-${newPos}px)`;
+  });
+
+  window.addEventListener('mouseup', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('dragging');
+
+    if (!dragMoved) return; // was a click, not a drag
+
+    const dx = e.pageX - startX;
+    if (dx < -50)      goTo(current + 1);
+    else if (dx > 50)  goTo(current - 1);
+    else               goTo(current); // snap back
+  });
+
+  // Prevent card links firing after a drag
+  track.addEventListener('click', e => {
+    if (dragMoved) e.preventDefault();
+  }, true);
+
+  // ── Touch / swipe ─────────────────────────────
+  let touchStartX = 0;
+  let touchStartScroll = 0;
+
+  track.addEventListener('touchstart', e => {
+    touchStartX      = e.touches[0].clientX;
+    touchStartScroll = getOffset(current);
+  }, { passive: true });
+
+  track.addEventListener('touchmove', e => {
+    const dx     = e.touches[0].clientX - touchStartX;
+    const newPos = Math.max(0, touchStartScroll - dx);
+    track.style.transform = `translateX(-${newPos}px)`;
+  }, { passive: true });
+
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (dx < -50)     goTo(current + 1);
+    else if (dx > 50) goTo(current - 1);
+    else              goTo(current); // snap back
+  });
+
+  // ── Re-snap on resize ─────────────────────────
+  window.addEventListener('resize', () => goTo(current), { passive: true });
+
+  // ── Initial state ─────────────────────────────
+  goTo(0);
+
+})();
